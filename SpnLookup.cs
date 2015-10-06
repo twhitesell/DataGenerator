@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace DataGenerator
 {
-    class Program
+    internal class SpnLookup
     {
-        static void Main(string[] args)
-        {
 
+        public SpnLookup()
+        {
             
         }
+
     }
 }

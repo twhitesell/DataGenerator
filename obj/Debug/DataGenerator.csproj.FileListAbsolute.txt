@@ -1,1 +1,8 @@
 C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\bin\Debug\DataGenerator.exe.config
+C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\bin\Debug\DataGenerator.exe
+C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\bin\Debug\DataGenerator.pdb
+C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\obj\Debug\DataGenerator.csprojResolveAssemblyReference.cache
+C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\obj\Debug\DataGenerator.Properties.Resources.resources
+C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\obj\Debug\DataGenerator.csproj.GenerateResource.Cache
+C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\obj\Debug\DataGenerator.exe
+C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\obj\Debug\DataGenerator.pdb

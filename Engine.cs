@@ -42,5 +42,21 @@ namespace DataGenerator
         public TimeSpan frequency;
         public int numberVehicles;
         public int numberToSpawn;
+
+        public SessionParameters(string[] args)
+        {
+            try
+            {
+                var inta = int.Parse(args[0]);
+                frequency = TimeSpan.FromSeconds(inta);
+                numberVehicles = int.Parse(args[1]);
+                numberToSpawn = int.Parse(args[2]);
+            }
+            catch (Exception e)
+            {
+                
+            }
+
+        }
     }
 }

@@ -8,22 +8,20 @@ namespace DataGenerator
 {
     internal class SpnLookup
     {
-
-
+        public string Header;
         public Int32 SpnCount;
-       
+        private Dictionary<int, Spn> Lookup = new Dictionary<int, Spn>();
 
 
         public SpnLookup(string columnHeaders, List<String> lines)
         {
-
+            Header = columnHeaders;
 
             foreach (var line in lines)
             {
-                
-
-
-
+                var spn = new Spn(line);
+                Lookup.Add(spn.SpnNumber, spn);
+                SpnCount++;
             }
 
             
@@ -56,6 +54,7 @@ namespace DataGenerator
             SpnNumber = Int32.Parse(split[2]);
             SpnName = split[3];
             RawDataRangeField = split[4];
+            ValuePostscript = string.Empty;
             ParseDataRangeField();
 
         }
@@ -69,12 +68,27 @@ namespace DataGenerator
             }
 
             var replaced = RawDataRangeField.Replace("to", "|");
-
-            var split = replaced.Split('|');
+            var replacedTO = replaced.Replace("TO", "|");
+            var replacedpercent = replacedTO.Replace("%", " %");
+            var split = replacedpercent.Split('|');
             var lowstring = split[0];
             var cleaned = split[1].Trim();
+            if (cleaned.Contains("mAhr (64.255Ahr)"))
+            {
+                cleaned = cleaned.Replace("mAhr (64.255Ahr)", " mAhr");
+            }
+
             var splithigh = cleaned.Split(' ');
-            ValuePostscript = splithigh[1];
+            if (splithigh.Count() > 1)
+            {
+                ValuePostscript = splithigh[1];
+            }
+            var splitlow = lowstring.Split(' ');
+            if (splitlow.Count() > 1)
+            {
+                lowstring = splitlow[0].Trim();
+            }
+
             Lowvalue = decimal.Parse(lowstring);
             Highvalue = decimal.Parse(splithigh[0]);
             Factor = GetPrecision(Lowvalue);

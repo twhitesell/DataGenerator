@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,29 +12,38 @@ namespace DataGenerator
     {
         static void Main(string[] args)
         {
+            ReadFile();
 
-            
         }
 
-        private static SpnLookup ReadFile(string filename)
+        private static SpnLookup ReadFile()
         {
-            StreamReader FileReader = new StreamReader(@"C:\MyFile.txt");
-            string FileContents;
-            FileContents = FileReader.ReadToEnd();
-            FileReader.Close();
-           /* foreach (string s in strValuesToSearch)
+
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "DataGenerator.1939_sig_data.txt";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             {
-                if (FileContents.Contains(s))
-                    FileContents = FileContents.Replace(s, stringToReplace);
-            }*/
+                if (stream != null)
+                {
+                    StreamReader FileReader = new StreamReader(stream);
+                    string header;
+                    List<String> lines = new List<string>();
+                    header = FileReader.ReadLine();
+                    while (!FileReader.EndOfStream)
+                    {
+                        lines.Add(FileReader.ReadLine().Trim());
+                    }
+                    FileReader.Close();
 
 
 
-            StreamWriter FileWriter = new StreamWriter(@"MyFile.txt");
-            FileWriter.Write(FileContents);
-            FileWriter.Close();
-
-
+                    var spnlookup = new SpnLookup(header, lines);
+                    return spnlookup;
+                }
+                return null;
+            }
 
 
         }

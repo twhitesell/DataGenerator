@@ -12,6 +12,10 @@ namespace DataGenerator
     class Program
     {
         private static Engine engine;
+
+        /// <summary>
+        /// main method
+        /// </summary>
         static void Main(string[] args)
         {
             var loookup = ReadFile();
@@ -20,6 +24,10 @@ namespace DataGenerator
             RunEngine();
         }
 
+        /// <summary>
+        /// starts engine
+        /// listens for user input
+        /// </summary>
         private static void RunEngine()
         {
             engine.Start();
@@ -28,8 +36,9 @@ namespace DataGenerator
             GoNext(info);
         }
 
-      
-
+        /// <summary>
+        /// directs flow
+        /// </summary>
         private static void GoNext(ConsoleKey info)
         {
             switch (info)
@@ -47,7 +56,9 @@ namespace DataGenerator
            
         }
 
-        //pauses the engine
+        /// <summary>
+        /// pauses engine
+        /// </summary>
         private static void Pause()
         {
             engine.Stop();
@@ -63,8 +74,6 @@ namespace DataGenerator
         /// <returns></returns>
         private static SpnLookup ReadFile()
         {
-
-
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = "DataGenerator.1939_sig_data.txt";
 

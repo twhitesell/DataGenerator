@@ -45,7 +45,6 @@ bin/Debug/DataGenerator.vshost.exe
 .vs/DataGenerator/v14/.suo
 obj/Debug/DataGenerator.csprojResolveAssemblyReference.cache
 obj/Debug/DataGenerator.csproj.GenerateResource.Cache
-*.exe
 obj/Debug/DataGenerator.csproj.FileListAbsolute.txt
 *.pdb
 obj/Debug/DataGenerator.Properties.Resources.resources

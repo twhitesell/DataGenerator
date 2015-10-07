@@ -10,13 +10,13 @@ namespace DataGenerator
     {
         public string Header;
         public Int32 SpnCount;
-        private Dictionary<int, Spn> Lookup = new Dictionary<int, Spn>();
+        public Dictionary<int, Spn> Lookup { get; set; }
 
 
         public SpnLookup(string columnHeaders, List<String> lines)
         {
             Header = columnHeaders;
-
+            Lookup = new Dictionary<int, Spn>();
             foreach (var line in lines)
             {
                 var spn = new Spn(line);
@@ -91,7 +91,7 @@ namespace DataGenerator
 
             Lowvalue = decimal.Parse(lowstring);
             Highvalue = decimal.Parse(splithigh[0]);
-            Factor = GetPrecision(Lowvalue);
+            Factor = GetPrecision(Highvalue);
 
 
         }

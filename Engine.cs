@@ -161,9 +161,10 @@ namespace DataGenerator
             {
                 output += rand.Next(1, Int32.MaxValue);
             }
-            if (dec > 0)
+            var remain = (int)(dec *Int32.MaxValue);
+            if (remain > 0)
             {
-                output += rand.Next(1, (int) (dec*Int32.MaxValue));
+                output += rand.Next(1, remain);
             }
             if (spn.Factor > 0)
             {

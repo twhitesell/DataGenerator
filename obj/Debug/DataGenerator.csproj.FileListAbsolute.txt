@@ -5,3 +5,4 @@ C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\obj\Debug\
 C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\obj\Debug\DataGenerator.csproj.GenerateResource.Cache
 C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\obj\Debug\DataGenerator.exe
 C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\obj\Debug\DataGenerator.pdb
+C:\SchoolStuff\SoftwareSpecDesign\project\DataGenerator\DataGenerator\obj\Debug\DataGenerator.csprojResolveAssemblyReference.cache

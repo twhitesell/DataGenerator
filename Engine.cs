@@ -17,12 +17,14 @@ namespace DataGenerator
         private SessionParameters SessionParameters { get; set; }
         private SpnLookup Lookup { get; set; }
         private Timer Timer { get; }
+        private Random random { get; set; }
 
         /// <summary>
         /// constructor
         /// </summary>
         public Engine(SpnLookup lookup, SessionParameters p)
         {
+            random = new Random();
             Lookup = lookup;
             SessionParameters = p;
             Timer = new Timer(p.Frequency.TotalMilliseconds);
@@ -44,14 +46,14 @@ namespace DataGenerator
 
                 for (int i = 0; i < SessionParameters.NumberToSpawn; i++)
                 {
-                    var vehicleId = new Random().Next(1, SessionParameters.NumberVehicles + 1);
-                    var spnNumber = new Random().Next(1, Lookup.SpnCount + 1);
+                    var vehicleId = random.Next(1, SessionParameters.NumberVehicles + 1);
+                    var spnNumber = random.Next(1, Lookup.SpnCount + 1);
                     var currentSpn = Lookup.Lookup.ToList()[spnNumber].Value;
                     var value = GetValue(currentSpn);
                     var time = DateTime.Now.ToString("MM-dd-yyyy_HH:mm:ss");
                     output.Add(new GeneratedLine(vehicleId, time, currentSpn.SpnNumber, value));
                 }
-                WriteOutput(output);
+                WriteAllOutput(output);
             }
             catch (Exception Ee)
             {
@@ -67,17 +69,16 @@ namespace DataGenerator
         /// creates specified format file name per vehicle
         /// writes all data per vehicle->file
         /// </summary>
-        private void WriteOutput(List<GeneratedLine> output)
+        private void WriteAllOutput(List<GeneratedLine> output)
         {
             foreach (var grup in output.GroupBy(x => x.vehicleId))
             {
                 var filename = String.Format("veh{0}_{1}.data", grup.Key, DateTime.Now.ToString("MMddyyyy_hhmmss"));
                 StreamWriter FileWriter = new StreamWriter(filename);
-                foreach (var i in grup)
+                foreach (var i in grup.ToList())
                 {
-                    FileWriter.Write(i.line);
+                    FileWriter.WriteLine(i.line);
                 }
-
                 FileWriter.Close();
             }
         }
